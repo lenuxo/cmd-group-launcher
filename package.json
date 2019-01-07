@@ -1,0 +1,23 @@
+{
+  "name": "cmd-group-lancher",
+  "version": "0.1.0",
+  "main": "./src/main.ts",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "scripts": {
+    "dev": "tsc -w",
+    "test": "node ./dist/main.js"
+  },
+  "bin": {
+    "f": "./dist/main.js"
+  }
+}
