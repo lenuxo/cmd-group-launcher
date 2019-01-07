@@ -1,20 +1,28 @@
 #!/usr/bin/env node
-import program from 'commander'
+import pm from 'commander'
+import { ls, config, select, error } from './cmds'
+
 const DATA = {
   version: require('../package.json').version,
   description: 'Run commands in groups fast.',
 }
+pm.version(DATA.version, '-v, --version').description(DATA.description)
 
-const Options = [
-  ['ls', '列出全部组全部命令'],
-  ['ls <groupname>', '列出指定组内命令'],
-  ['--config', '打开配置文件'],
-]
-program.version(DATA.version, '-v, --version').description(DATA.description)
-
-// ls
-program.command('ls <groupname>').action(groupname => {
-  console.log(groupname)
-})
-program.parse(process.argv)
-console.log('boom!')
+pm.arguments('[opts] [groups...]')
+  .action((opts: string | undefined, groups: any[] | undefined) => {
+    switch (opts) {
+      case 'c':
+      case 'config':
+        config()
+        break
+      case 'l':
+      case 'ls':
+      case 'list':
+        ls(groups)
+        break
+      default:
+        select([opts, ...groups])
+        break
+    }
+  })
+  .parse(process.argv)
