@@ -1,10 +1,8 @@
 import fs from 'fs-extra'
 import chalk from 'chalk'
-import os from 'os'
 const log = console.log
 
-export default async function init() {
-  let path = os.homedir() + '/f.config.json'
+export default async function init(path: string) {
   let newData = {
     list: [
       {
@@ -12,11 +10,10 @@ export default async function init() {
         cmd: [`echo "I am command 1."`, `echo "I am command 2."`],
       },
     ],
-    path: path,
   }
   try {
     const data = await fs.readJSON(path)
-    return { list: data.list, path: path }
+    return data
   } catch (err) {
     if (err.code == 'ENOENT') {
       log(chalk.yellow(`配置文件不存在`))

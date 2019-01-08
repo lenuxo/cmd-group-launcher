@@ -1,6 +1,6 @@
-# cmd group launcher
+# cmd fast launcher [macOS]
 
-运行一组命令
+运行一组命令，适用于 macOS
 
 ## 使用
 
@@ -9,5 +9,3 @@
 - `r ls` 列出全部组及其命令
 - `r ls <group_name|group_index>` 列出指定组及其命令
 - `r --config` 打开配置文件
-
-## UPDATE
