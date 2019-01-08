@@ -4,10 +4,14 @@
   "main": "./src/main.ts",
   "license": "MIT",
   "dependencies": {
+    "chalk": "^2.4.2",
     "commander": "^2.19.0",
-    "inquirer": "^6.2.1"
+    "fs-extra": "^7.0.1",
+    "inquirer": "^6.2.1",
+    "tree-stringify": "^1.1.0"
   },
   "devDependencies": {
+    "@types/fs-extra": "^5.0.4",
     "@types/node": "^10.12.18",
     "eslint": "^5.12.0",
     "eslint-config-airbnb-base": "^13.1.0",
