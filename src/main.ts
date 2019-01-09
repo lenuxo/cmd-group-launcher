@@ -8,28 +8,39 @@ let DATA: { path: string; list: any[] }
 let configPath = os.homedir() + '/f.config.json'
 const main = async function() {
   DATA = await init(configPath)
-  pm.version(require('../package.json').version, '-v, --version').description(
-    'Run commands in groups fast.'
-  )
-  // TODO: 设置帮助信息
-  pm.arguments('[opts] [groups...]')
-    .action((opts: string | undefined, groups: any[] | undefined) => {
-      switch (opts) {
-        case 'c':
-        case 'config':
-          config(configPath, DATA)
-          break
-        case 'l':
-        case 'ls':
-        case 'list':
-          ls(DATA.list, groups)
-          break
-        default:
-          // TODO:
-          select(DATA.list, [opts, ...groups])
-          break
-      }
+  pm.version(require('../package.json').version, '-v, --version')
+    .description('Run commands in groups fast.')
+    .usage('[command] [group-name/index ...]')
+
+  pm.command('c')
+    .alias('config')
+    .description('Open config file.')
+    .action(() => {
+      config(configPath, DATA)
     })
-    .parse(process.argv)
+  pm.command('l [groupnames...]')
+    .alias('list')
+    .description(
+      'List all/specific groups with containing commands. (group name or index number)'
+    )
+    .action(groupnames => {
+      ls(DATA.list, groupnames)
+    })
+  pm.command('* [groupnames...]')
+    .description('Run specific groups of commands.')
+    .action(groupnames => {
+      select(DATA.list, groupnames)
+    })
+  if (process.argv.length < 3) {
+    select(DATA.list, [])
+  }
+  pm.on('--help', () => {
+    console.log('')
+    console.log('Examples:')
+    console.log(`f`)
+    console.log(`f mygroup`)
+    console.log(`f mygroup1 mygroup2`)
+  })
+  pm.parse(process.argv)
 }
 main()

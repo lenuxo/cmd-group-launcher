@@ -6,7 +6,7 @@ export default async function init(path: string) {
   let newData = {
     list: [
       {
-        name: 'group 1',
+        name: 'Example Group',
         cmd: [`echo "I am command 1."`, `echo "I am command 2."`],
       },
     ],
@@ -20,7 +20,7 @@ export default async function init(path: string) {
       try {
         await fs.writeJSON(path, newData)
         log(chalk.green(`已创建新配置文件: ${path}`))
-        // process.exit(1)
+        process.exit(0)
       } catch (err) {
         log(
           chalk.inverse.red('[!]'),

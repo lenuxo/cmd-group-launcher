@@ -1,7 +1,6 @@
 import inquirer from 'inquirer'
 import find from './findGroup'
 import chalk from 'chalk'
-const clear = require('clear')
 import runCmd from './runCmd'
 
 export default function select(totalList: any[], groups: any | undefined) {
