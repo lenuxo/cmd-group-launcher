@@ -2,12 +2,13 @@
   "name": "cmd-fast-lancher",
   "description": "Run commands in groups fast.",
   "version": "0.1.0",
+  "author": "Duan <hello@duanjun.net>",
+  "license": "MIT",
   "keywords": [
     "cli",
     "OSX"
   ],
   "main": "./src/main.ts",
-  "license": "MIT",
   "dependencies": {
     "app-root-path": "^2.1.0",
     "chalk": "^2.4.2",
@@ -31,5 +32,10 @@
   "bin": {
     "f": "./dist/main.js"
   },
-  "readme": "./readme.md"
+  "readme": "./readme.md",
+  "homepage": "https://github.com/lenuxo/cmd-group-launcher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lenuxo/cmd-group-launcher.git"
+  }
 }
