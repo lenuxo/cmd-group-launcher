@@ -4,7 +4,7 @@
 
 ## 安装
 
-`npm install -g`
+`npm install -g cmd-fast-lancher`
 
 ## 使用
 
